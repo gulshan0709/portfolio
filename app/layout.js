@@ -1,4 +1,3 @@
-import { GoogleTagManager } from "@next/third-parties/google";
 import { Inter } from "next/font/google";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,6 +6,14 @@ import ScrollToTop from "./components/helper/scroll-to-top";
 import Navbar from "./components/navbar";
 import "./css/card.scss";
 import "./css/globals.scss";
+import dynamic from "next/dynamic";
+
+// Dynamically import GoogleTagManager with no SSR
+const GoogleTagManager = dynamic(
+  () => import("@next/third-parties/google").then((mod) => mod.GoogleTagManager),
+  { ssr: false }
+);
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -26,8 +33,10 @@ export default function RootLayout({ children }) {
           <ScrollToTop />
         </main>
         <Footer />
+        {process.env.NEXT_PUBLIC_GTM && (
+          <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM} />
+        )}
       </body>
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM} />
     </html>
   );
 }
