@@ -9,9 +9,11 @@ import Skills from "./components/homepage/skills";
 import Blog from "./components/homepage/blog";
 
 async function getData() {
+
   const res = await fetch(
-    `https://dev.to/api/articles?username=${personalData.devUsername}`
-  );
+  `https://dev.to/api/articles?username=${personalData.devUsername}`,
+  { cache: 'force-cache' }
+);
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
