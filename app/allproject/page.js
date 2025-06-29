@@ -1,3 +1,4 @@
+"use client"
 import { projectsData } from "@/utils/data/projects-data";
 import ProjectCard from "../components/homepage/projects/project-card";
 
