@@ -1,5 +1,4 @@
 // @flow strict
-"use client"
 import { personalData } from "@/utils/data/personal-data";
 import BlogCard from "../components/homepage/blog/blog-card";
 
