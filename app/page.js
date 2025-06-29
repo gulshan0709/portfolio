@@ -7,6 +7,7 @@ import HeroSection from "./components/homepage/hero-section";
 import Projects from "./components/homepage/projects";
 import Skills from "./components/homepage/skills";
 import Blog from "./components/homepage/blog";
+import Testimonial from "./components/homepage/testimonials";
 
 async function getData() {
 
@@ -39,6 +40,7 @@ export default async function Home() {
       <Projects />
       <Education />
       <Blog blogs={blogs} />
+      <Testimonial/>
       <ContactSection />
     </div>
   );
