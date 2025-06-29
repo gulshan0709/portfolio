@@ -10,6 +10,7 @@ import { MdAlternateEmail } from "react-icons/md";
 import ContactForm from "./contact-form";
 
 function ContactSection() {
+   console.log('/ContactSection')
   return (
     <div id="contact" className="my-12 lg:my-16 relative mt-24 text-white">
       <div className="hidden lg:flex flex-col items-center absolute top-24 -right-8">

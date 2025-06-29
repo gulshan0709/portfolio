@@ -29,6 +29,7 @@ async function getData() {
 }
 
 export default async function Home() {
+  console.log('/page')
   const blogs = await getData();
   return (
     <div suppressHydrationWarning>

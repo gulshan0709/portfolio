@@ -5,7 +5,7 @@ import Link from 'next/link';
 import ProjectCard from './project-card';
 
 const Projects = () => {
-
+console.log('/Projects')
   return (
     <div id='projects' className="relative z-50  my-12 lg:my-24">
       <div className="sticky top-10">
