@@ -1,10 +1,9 @@
 "use client"
 
 import { useEffect } from 'react';
-
+console.log("Rendering [ComponentName], typeof document:");
 const GlowCard = ({ children, identifier }) => {
   useEffect(() => {
-    // Add browser check to prevent SSR issues
     if (typeof document === 'undefined') return;
 
     const CONTAINER = document.querySelector(`.glow-container-${identifier}`);
