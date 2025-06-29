@@ -16,6 +16,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  console.log('process.env',process.env)
   return (
     <html lang="en">
       <body className={inter.className}>
