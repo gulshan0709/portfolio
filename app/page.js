@@ -29,7 +29,6 @@ async function getData() {
 }
 
 export default async function Home() {
-  console.log('/page')
   const blogs = await getData();
   return (
     <div suppressHydrationWarning>
@@ -37,8 +36,8 @@ export default async function Home() {
       <AboutSection />
       {/* <Experience /> */}
       <Skills />
-      {/* <Projects /> */}
-      <Education />
+      <Projects />
+      {/* <Education /> */}
       <Blog blogs={blogs} />
       <ContactSection />
     </div>

@@ -9,7 +9,6 @@ import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 
 function HeroSection() {
-  console.log('/HeroSection')
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
       <Image
