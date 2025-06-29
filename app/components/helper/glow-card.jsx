@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 const GlowCard = ({ children, identifier }) => {
-  console.log("Rendering [ComponentName], typeof document:");
+  console.log("Rendering GlowCard, typeof document:", typeof document);
   useEffect(() => {
     if (typeof document === 'undefined') return;
 
