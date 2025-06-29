@@ -1,8 +1,8 @@
 "use client"
 
 import { useEffect } from 'react';
-console.log("Rendering [ComponentName], typeof document:");
 const GlowCard = ({ children, identifier }) => {
+  console.log("Rendering [ComponentName], typeof document:");
   useEffect(() => {
     if (typeof document === 'undefined') return;
 
