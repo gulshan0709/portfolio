@@ -1,3 +1,4 @@
+// @flow strict
 import { projectsData } from '@/utils/data/projects-data';
 import { FaArrowRight } from 'react-icons/fa';
 import Link from 'next/link';
