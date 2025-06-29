@@ -8,13 +8,13 @@ export const educations = [
   {
     id: 2,
     title: "Senior Secondary",
-    duration: "2017",
+    duration: "2016 - 2017",
     institution: "LP Shahi College,Patahi, Muzaffarpur",
   },
   {
     id: 3,
     title: "Secondary School",
-    duration: "2015",
+    duration: "2014 - 2015",
     institution: "S.K.K.S.D High School, Jaintpur, Muzaffarpur",
   }
 ]
