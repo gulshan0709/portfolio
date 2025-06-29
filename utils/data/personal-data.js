@@ -8,7 +8,7 @@ export const personalData = {
   name: "Gulshan Kumar",
   profile: '/profile.png',
   designation: "Senior Software Developer",
-  description: "Hi, I'm Gulshan Kumar, A Software Developer with nearly 4 years of experience building scalable, user-focused applications using JavaScript, React, Python, and Django. I love solving problems, learning new technologies, and collaborating on impactful projects. I'm always excited to take on new challenges and deliver high-quality software.",
+  description: "Hi, I'm Gulshan Kumar, a Software Developer with 4 years of experience building scalable, user-friendly applications using JavaScript, React, Python, and Django. I’m passionate about writing clean, efficient code and transforming complex problems into simple, elegant solutions. I’ve worked on web apps, REST APIs, and advanced AI systems using facial recognition and data analysis. I thrive in collaborative environments, love learning new technologies, and am driven to deliver impactful, high-quality software.",
   email: 'gulshansingh0709@gmail.com',
   phone: '+91 8920658335',
   address: 'Sector-130, Noida, Uttar Pradesh, India 201304',
