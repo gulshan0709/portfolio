@@ -13,7 +13,7 @@ export const testimonialData = [
     description:
       "Working with Gulshan kumar has been one of the best parts of my journey. Always helpful, patient, and incredibly supportive. they’ve been more than just a senior; they've been a true mentor. No matter the time or situation, they were always there to guide and motivate. I genuinely admire their dedication and the positive energy they bring. Forever grateful to have learned under their guidance.",
     role: "AI/ML Engineer",
-    compnay: "goML, (Ex-Realcoderz)",
+    compnay: "goML",
     photo:"/sourabh_sunil.png"
   },
   {
@@ -22,7 +22,7 @@ export const testimonialData = [
     description:
       "I have worked alongside Gulshan and can confidently say he is a dedicated, technically proficient professional. As a Senior Software Developer, he brings expertise, strong problem-solving skills, and ownership to every project. His understanding of software architecture, clean code practices, and scalable design, combined with his collaborative nature, make him a valuable asset.",
     role: "Lead AI/ML Engineer",
-    compnay: "HCL Tech, (Ex-Realcoderz)",
+    compnay: "HCLTech",
     photo:"/saurabh.png"
   },
   {
