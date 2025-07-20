@@ -1,10 +1,15 @@
 // @flow strict
+"use client";
+import dynamic from "next/dynamic";
 import { educations } from "@/utils/data/educations";
 import Image from "next/image";
 import { BsPersonWorkspace } from "react-icons/bs";
 import lottieFile from '../../../assets/lottie/study.json';
-import AnimationWrapper from "../../helper/animation-wrapper";
 import GlowCard from "../../helper/glow-card";
+const AnimationLottie = dynamic(() => import("../../helper/animation-lottie"), {
+  ssr: false,
+});
+
 
 function Education() {
   return (
@@ -36,7 +41,7 @@ function Education() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
           <div className="flex justify-center items-start">
             <div className="w-3/4 h-3/4">
-              <AnimationWrapper animationPath={lottieFile} />
+              <AnimationLottie animationPath={lottieFile} />
             </div>
           </div>
 

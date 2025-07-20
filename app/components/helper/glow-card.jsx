@@ -8,7 +8,6 @@ const GlowCard = ({ children, identifier }) => {
     const CONTAINER = document.querySelector(`.glow-container-${identifier}`);
     const CARDS = document.querySelectorAll(`.glow-card-${identifier}`);
 
-    // Early return if elements don't exist
     if (!CONTAINER || !CARDS.length) return;
 
     const CONFIG = {
