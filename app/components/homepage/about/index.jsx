@@ -21,6 +21,9 @@ function AboutSection() {
           <p className="text-gray-200 text-sm lg:text-lg">
             {personalData.description}
           </p>
+          <p className="text-gray-200 text-sm lg:text-lg mt-4">
+            {personalData.descriptionline2}
+          </p>
         </div>
         <div className="flex justify-center order-1 lg:order-2">
           <Image
