@@ -36,10 +36,7 @@ const generateVisitorEmail = (location) => {
     connection,
     flag,
   } = location;
-  const formattedTime = formatTime(
-    timezone?.current_time,
-    timezone?.id || "Asia/Kolkata"
-  );
+  const formattedTime = formatTime(timezone?.current_time, "Asia/Kolkata");
 
   return `
     <div style="font-family: Arial, sans-serif; padding: 20px;">
@@ -49,7 +46,10 @@ const generateVisitorEmail = (location) => {
       <p><strong>Continent:</strong> ${continent}</p>
       <p><strong>Coordinates:</strong> ${latitude}, ${longitude}</p>
       <p><strong>Timezone:</strong> ${timezone?.id} (${timezone?.abbr})</p>
-      <p><strong>Local Time:</strong> ${timezone?.current_time}</p>
+      <p><strong>Local Time:</strong> ${formatTime(
+        timezone?.current_time,
+        timezone?.id
+      )}</p>
       <p><strong>Indian Time:</strong> ${formattedTime}</p>
       <p><strong>ISP:</strong> ${connection?.isp}</p>
       <p><strong>Organization:</strong> ${connection?.org}</p>
@@ -62,13 +62,15 @@ const generateVisitorEmail = (location) => {
 
 export async function GET(request) {
   try {
-    const geoRes = await fetch("https://ipwho.is/");
+    const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "103.170.81.196";
+    console.log('ip',ip)
+    const geoRes = await fetch(`https://ipwho.is/${ip}`);
     const location = await geoRes.json();
 
     const mailOptions = {
       from: "Portfolio Visitor Logger",
       to: process.env.EMAIL_ADDRESS,
-      subject: `🌍 New Visitor from ${location.city}, ${location.country}`,
+      subject: `New Visitor from ${location.city}, ${location.country}`,
       html: generateVisitorEmail(location),
     };
 
