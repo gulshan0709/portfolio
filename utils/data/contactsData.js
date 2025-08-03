@@ -1,5 +1,5 @@
 export const contactsData = {
-  email: "gulshansingh0709@gmail.com",
+  email: process.env.EMAIL_ADDRESS,
   phone: "+91 8920658335",
   address: "Sector-130, Noida, Uttar Pradesh, India 201304",
   github: "https://github.com/gulshan0709",

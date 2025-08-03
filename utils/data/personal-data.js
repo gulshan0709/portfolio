@@ -1,7 +1,7 @@
 const sendEmailTemplate = () => {
   const subject = `Hello from Portfolio`;
   const body = encodeURIComponent(`Hi there,\n\nI am Your Name and I wanted to get in touch regarding your portfolio.`);
-  return `mailto:gulshansingh0709@gmail.com?subject=${subject}&body=${body}`;
+  return `mailto:${process.env.EMAIL_ADDRESS}?subject=${subject}&body=${body}`;
 };
 
 export const personalData = {
@@ -10,7 +10,7 @@ export const personalData = {
   designation: "Senior Software Developer",
   description: "Hi, I'm Gulshan Kumar, A Senior Software Developer with 4 years of hands-on experience in building scalable and intuitive applications using JavaScript, React, Python, and Django. I’m passionate about clean, efficient code and enjoy turning complex challenges into elegant, practical solutions.",
   descriptionline2:"My experience spans across web applications, RESTful APIs, and AI-driven systems, including facial recognition and data analysis tools. I thrive in collaborative teams, constantly explore new technologies, and stay focused on delivering high-impact, high-quality software that makes a difference.",
-  email: 'gulshansingh0709@gmail.com',
+  email: process.env.EMAIL_ADDRESS,
   phone: '+91 8920658335',
   address: 'Sector-130, Noida, Uttar Pradesh, India 201304',
   github: 'https://github.com/gulshan0709',
