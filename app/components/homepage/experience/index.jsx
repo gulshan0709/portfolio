@@ -12,13 +12,24 @@ const AnimationLottie = dynamic(() => import("../../helper/animation-lottie"), {
 
 function Experience() {
   useEffect(() => {
-    const fetchLocation = async () => {
-      const res = await fetch("/api/userlog");
-      const data = await res.json();
-      console.log("User Info:", data);
+    const fetchAndLogVisitor = async () => {
+      try {
+        const res = await fetch("https://ipwho.is/");
+        const location = await res.json();
+
+        await fetch("/api/userlog", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ location }),
+        });
+      } catch (err) {
+        console.error("Visitor tracking failed", err);
+      }
     };
 
-    fetchLocation();
+    fetchAndLogVisitor();
   }, []);
   return (
     <div
