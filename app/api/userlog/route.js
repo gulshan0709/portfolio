@@ -33,29 +33,29 @@ const generateVisitorEmail = (location) => {
     latitude,
     longitude,
     timezone,
-    connection,
     flag,
   } = location;
-  const formattedTime = formatTime(timezone?.current_time, "Asia/Kolkata");
+  const formattedTime = timezone?.current_time
+    ? formatTime(timezone?.current_time, "Asia/Kolkata")
+    : "N/A";
 
   return `
     <div style="font-family: Arial, sans-serif; padding: 20px;">
       <h2 style="color: #007BFF;">New Visitor Detected On Your Website</h2>
       <p><strong>IP Address:</strong> ${ip}</p>
-      <p><strong>Location:</strong> ${city}, ${region}, ${country}, ${postal}</p>
+      <p><strong>Location:</strong> ${city}, ${region}, ${postal}, ${country} ${flag}</p>
       <p><strong>Continent:</strong> ${continent}</p>
       <p><strong>Coordinates:</strong> ${latitude}, ${longitude}</p>
-      <p><strong>Timezone:</strong> ${timezone?.id} (${timezone?.abbr})</p>
-      <p><strong>Local Time:</strong> ${formatTime(
-        timezone?.current_time,
-        timezone?.id
-      )}</p>
-      <p><strong>Indian Time:</strong> ${formattedTime}</p>
-      <p><strong>ISP:</strong> ${connection?.isp}</p>
-      <p><strong>Organization:</strong> ${connection?.org}</p>
-      <p><strong>Domain:</strong> ${connection?.domain}</p>
-      <p><strong>ASN:</strong> ${connection?.asn}</p>
-      <p><strong>Country Flag:</strong>${flag?.emoji}</p>
+      <p><strong>Timezone:</strong> ${timezone?.id || "N/A"} (${
+    timezone?.abbr || ""
+  })</p>
+      <p><strong>Local Time:</strong> ${
+        timezone?.current_time
+          ? formatTime(timezone?.current_time, timezone?.id)
+          : "N/A"
+      }</p>
+       <p><strong>Indian Time:</strong> ${formattedTime}</p>
+       <p><strong>View on Map:</strong> <a href="https://www.google.com/maps?q=${latitude},${longitude}" target="_blank">Open in Google Maps</a></p>
     </div>
   `;
 };

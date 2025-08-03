@@ -14,8 +14,70 @@ function Experience() {
   useEffect(() => {
     const fetchAndLogVisitor = async () => {
       try {
-        const res = await fetch("https://ipwho.is/");
-        const location = await res.json();
+        const getGeolocation = () =>
+          new Promise((resolve, reject) => {
+            if (!navigator.geolocation) {
+              return reject(new Error("Geolocation not supported"));
+            }
+
+            navigator.geolocation.getCurrentPosition(
+              (position) => {
+                resolve({
+                  latitude: position.coords.latitude,
+                  longitude: position.coords.longitude,
+                  source: "geolocation",
+                });
+              },
+              (error) => {
+                reject(error);
+              },
+              { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+            );
+          });
+
+        let location;
+
+        try {
+          const geoCoords = await getGeolocation();
+
+          const res = await fetch("https://ipwho.is/");
+          const ipData = await res.json();
+
+          location = {
+            ...geoCoords,
+            ip: ipData.ip,
+            city: ipData.city,
+            region: ipData.region,
+            country: ipData.country,
+            postal: ipData.postal,
+            continent: ipData.continent,
+            timezone: ipData.timezone,
+            connection: ipData.connection,
+            flag: ipData?.flag?.emoji,
+          };
+        } catch (geoError) {
+          console.warn("Geolocation failed, falling back to IP-only", geoError);
+
+          const res = await fetch("https://ipwho.is/");
+          const ipData = await res.json();
+
+          location = {
+            latitude: ipData.latitude,
+            longitude: ipData.longitude,
+            ip: ipData.ip,
+            city: ipData.city,
+            region: ipData.region,
+            country: ipData.country,
+            postal: ipData.postal,
+            continent: ipData.continent,
+            timezone: ipData.timezone,
+            connection: ipData.connection,
+            flag:  ipData?.flag?.emoji,
+            source: "ip",
+          };
+        }
+
+        console.log("Sending visitor location:", location);
 
         await fetch("/api/userlog", {
           method: "POST",
