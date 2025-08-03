@@ -40,7 +40,7 @@ const generateVisitorEmail = (location) => {
 
   return `
     <div style="font-family: Arial, sans-serif; padding: 20px;">
-      <h2 style="color: #007BFF;">👀 New Visitor Detected On Your Website</h2>
+      <h2 style="color: #007BFF;">New Visitor Detected On Your Website</h2>
       <p><strong>IP Address:</strong> ${ip}</p>
       <p><strong>Location:</strong> ${city}, ${region}, ${country}, ${postal}</p>
       <p><strong>Continent:</strong> ${continent}</p>
@@ -60,12 +60,9 @@ const generateVisitorEmail = (location) => {
   `;
 };
 
-export async function GET(request) {
+export async function POST(request) {
   try {
-    const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "103.170.81.196";
-    console.log('ip',ip)
-    const geoRes = await fetch(`https://ipwho.is/${ip}`);
-    const location = await geoRes.json();
+    const { location } = await request.json();
 
     const mailOptions = {
       from: "Portfolio Visitor Logger",
@@ -74,17 +71,9 @@ export async function GET(request) {
       html: generateVisitorEmail(location),
     };
 
-    try {
-      await transporter.sendMail(mailOptions);
-    } catch (emailErr) {
-      console.error("Email error:", emailErr);
-      return NextResponse.json(
-        { success: false, message: "Email failed." },
-        { status: 500 }
-      );
-    }
+    await transporter.sendMail(mailOptions);
 
-    return NextResponse.json({ success: true, location }, { status: 200 });
+    return NextResponse.json({ success: true }, { status: 200 });
   } catch (err) {
     console.error("Visitor tracking failed:", err);
     return NextResponse.json(
